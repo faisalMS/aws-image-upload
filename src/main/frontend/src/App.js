@@ -23,9 +23,12 @@ const UserProfiles = () => {
   return userProfiles.map((userProfile, index) => {
     return(
       <div key={index}>
-        <MyDropzone/>
+        <br />
+        {/* todo: profile image */}
         <h1>{userProfile.username}</h1>
         <p>{userProfile.userProfileId}</p>
+        <MyDropzone/>
+        <br />
       </div>
     )
   })
@@ -33,7 +36,8 @@ const UserProfiles = () => {
 
 function MyDropzone() {
   const onDrop = useCallback(acceptedFiles => {
-    // Do something with the files
+    const file = acceptedFiles[0];
+    console.log(file);
   }, [])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
@@ -42,8 +46,8 @@ function MyDropzone() {
       <input {...getInputProps()} />
       {
         isDragActive ?
-          <p>Drop the files here ...</p> :
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <p>Drop the image here ...</p> :
+          <p>Drag 'n' drop profile image, or click to select profile image</p>
       }
     </div>
   )
